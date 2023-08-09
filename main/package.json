@@ -1,0 +1,23 @@
+{
+  "name": "collectibles-project",
+  "version": "1.0.0",
+  "description": "This project is designed to showcase our full-stack development skills by creating an application that allows users to create and procure a collection of their favorite items.",
+  "main": "server.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Kumoko8/Collectibles-Full-Stack-App.git"
+  },
+  "author": "Group-7",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "express-handlebars": "^7.1.2",
+    "mysql2": "^3.6.0",
+    "sequelize": "^6.32.1"
+  }
+}

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang=“en”>
+<head>
+    <meta charset=“UTF-8">
+    <meta name=“viewport” content=“width=device-width, initial-scale=1.0">
+    <title>Tech Blog</title>
+</head>
+<body>
+    <header>
+        <ul>
+            <li> <a>Home</a></li>
+            <li> <a>Dashboard</a></li>
+            <li> <a>Login</a></li>
+            {{#if loggedIn}}
+            <li> <a>Logout</a></li>
+            {{/if}}
+    </ul>
+    </header>
+{{{body}}}
+    <footer></footer>
+</body>
+</html>
