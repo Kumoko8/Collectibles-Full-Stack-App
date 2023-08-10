@@ -4,6 +4,7 @@
   "description": "This project is designed to showcase our full-stack development skills by creating an application that allows users to create and procure a collection of their favorite items.",
   "main": "server.js",
   "scripts": {
+    "seed": "node db/seed.js",
     "test": "test"
   },
   "repository": {
