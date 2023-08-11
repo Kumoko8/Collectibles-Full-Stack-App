@@ -3,22 +3,22 @@
 <head>
     <meta charset=“UTF-8">
     <meta name=“viewport” content=“width=device-width, initial-scale=1.0">
-    <title>Tech Blog</title>
+    <title>Collectibles</title>
 </head>
 <body>
     <header>
-        <ul>
-            <li> <a>Home</a></li>
-            <li> <a>Dashboard</a></li>
-            <li> <a>Login</a></li>
-            {{#if loggedIn}}
-            <li> <a>Logout</a></li>
-            {{/if}}
-    </ul>
+        <h1> Welcome to Collectibles! </h1>
     </header>
-{{{body}}}
-    <footer>
-        
-    </footer>
+      <nav>
+    <a href="/">Home</a>
+    <a href="#">Collections</a>
+    <a href="#">Login</a>
+    {{#if loggedIn}}
+    <a href="#">Logout</a>
+    {{/if}}
+        </nav>
+       <section>
+    {{{body}}}
+       </section>     
 </body>
 </html>
