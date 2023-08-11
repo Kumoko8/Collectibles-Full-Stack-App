@@ -1,20 +1,24 @@
 <!DOCTYPE html>
 <html lang=“en”>
 <head>
-    <meta charset=“UTF-8">
+    <!-- <meta charset=“UTF-8">
     <meta name=“viewport” content=“width=device-width, initial-scale=1.0">
-    <title>Tech Blog</title>
+    <title>Tech Blog</title> -->
 </head>
 <body>
-    <header>
-        <ul>
-            <li> <a>Home</a></li>
-            <li> <a>Dashboard</a></li>
-            <li> <a>Login</a></li>
-            {{#if loggedIn}}
-            <li> <a>Logout</a></li>
-            {{/if}}
-    </ul>
+ <section> 
+    <a href="background image"> Welcome to Collectibles! </a>
+ </section>
+ <section>
+    <p> Login Here </p>
+        <form action="/submit_form" method="post">
+            <label for="name">Email/Username:</label>
+            <input type="text" id="name" name="name" required><br><br>
+            
+            <label for="email">Email/Username:</label>
+            <input type="email" id="email" name="email" required><br><br>
+    </form>
+ </section>
     </header>
 {{{body}}}
     <footer></footer>
