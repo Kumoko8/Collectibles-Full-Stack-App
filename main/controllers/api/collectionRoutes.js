@@ -31,4 +31,54 @@ router.post("/", async (req, res) => {
   }
 });
 
+// Get One Collection
+router.get("/:id", async (req, res) => {
+  try {
+    const collectionData = await Collection.findByPk(req.params.id);
+    if (!collectionData) {
+      res.status(404).json({ message: "No collection with this id!" });
+      return;
+    }
+    res.status(200).json(collectionData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+// Update A Collection
+router.put("/:id", async (req, res) => {
+  try {
+    const collectionData = await Collection.update(req.body, {
+      where: {
+        id: req.params.id,
+      },
+    });
+    if (!collectionData[0]) {
+      res.status(404).json({ message: "No collection with this id!" });
+      return;
+    }
+    res.status(200).json(collectionData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+// Delete A Collection
+router.delete("/:id", async (req, res) => {
+  try {
+    const collectionData = await Collection.destroy({
+      where: {
+        id: req.params.id,
+      },
+    });
+    if (!collectionData) {
+      res.status(404).json({ message: "No collection with this id!" });
+      return;
+    }
+    res.status(200).json(collectionData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 module.exports = router;
