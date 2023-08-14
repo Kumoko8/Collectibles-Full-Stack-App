@@ -26,14 +26,14 @@ Item.init(
       type: DataTypes.DATE,
       allowNull: false,
     },
-    collection_id: {
-      type: DataTypes.INTEGER,
-      // allowNull: false,
-      references: {
-        model: "collection",
-        key: "id",
-      },
-    },
+    // collection_id: {
+    //   type: DataTypes.INTEGER,
+    //   // allowNull: false,
+    //   references: {
+    //     model: "collection",
+    //     key: "id",
+    //   },
+    // },
   },
   {
     sequelize,

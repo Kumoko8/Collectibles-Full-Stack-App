@@ -1,14 +1,22 @@
 const router = require("express").Router();
 const sequelize = require("../../config/connection");
 
-const { Item } = require("../../models");
+const { Collection, Item } = require("../../models");
 
 // Get all items
 router.get("/", async (req, res) => {
   try {
+    // const dbAllItems = await Collection.findAll({
+    //   include: [
+    //     {
+    //       model: Item,
+    //       attributes: ["name", "description"],
+    //     },
+    //   ],
+    // });
     const dbAllItems = await Item.findAll({
-      attributes: {},
-      order: [["collection_id", "ASC"]],
+      // attributes: {},
+      // order: [["collection_id", "ASC"]],
     });
     res.status(200).json(dbAllItems);
   } catch (err) {

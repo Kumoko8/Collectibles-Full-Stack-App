@@ -15,8 +15,8 @@ Collection.hasMany(Item, {
   foreignKey: "collection_id",
 });
 
-Item.belongsTo(Collection, {
-  foreignKey: "collection_id",
-});
+// Collection.hasMany(Item);
+
+Item.belongsTo(Collection);
 
 module.exports = { User, Collection, Item };
