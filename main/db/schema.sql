@@ -1,8 +1,8 @@
 
 --SCHEMA SETUP
-CREATE DATABASE IF NOT EXISTS COLLECTIBILES;
+CREATE DATABASE IF NOT EXISTS COLLECTIBILES_db;
 
-USE COLLECTIBILES;
+USE COLLECTIBILES_db;
 
 DROP TABLE IF EXISTS USERS;
 
@@ -57,16 +57,16 @@ CREATE TABLE COMMENTS (
 );
 
 --SEED SCRIPTS
-INSERT INTO USERS (username, email, password) VALUES ('jaclynb','jaclynbarcal@gmail.com','pass123');
-INSERT INTO USERS (username, email, password) VALUES ('groverthadawg','grovedog@gmail.com','pass123');
+INSERT INTO USERS (username, email, password) VALUES ('jaclynb','jaclynbarcal@gmail.com','pass123'),
+    ('groverthadawg','grovedog@gmail.com','pass123');
 
 INSERT INTO COLLECTIONS (title, user_id) VALUES ('my collection', 1);
 
-INSERT INTO COLLECTION_IMAGES (image_url, collection_id) VALUES ('https://storage.googleapis.com/www.krakenden.net/Collectibiles/20230809_232701.jpg', 1);
-INSERT INTO COLLECTION_IMAGES (image_url, collection_id) VALUES ('https://storage.googleapis.com/www.krakenden.net/Collectibiles/20230809_232716.jpg', 1);
-INSERT INTO COLLECTION_IMAGES (image_url, collection_id) VALUES ('https://storage.googleapis.com/www.krakenden.net/Collectibiles/20230809_232736.jpg', 1);
-INSERT INTO COLLECTION_IMAGES (image_url, collection_id) VALUES ('https://storage.googleapis.com/www.krakenden.net/Collectibiles/20230809_232758.jpg', 1);
-INSERT INTO COLLECTION_IMAGES (image_url, collection_id) VALUES ('https://storage.googleapis.com/www.krakenden.net/Collectibiles/20230809_232833.jpg', 1);
+INSERT INTO COLLECTION_IMAGES (image_url, collection_id) VALUES ('https://storage.googleapis.com/www.krakenden.net/Collectibiles/20230809_232701.jpg', 1),
+('https://storage.googleapis.com/www.krakenden.net/Collectibiles/20230809_232716.jpg', 1),
+('https://storage.googleapis.com/www.krakenden.net/Collectibiles/20230809_232736.jpg', 1),
+('https://storage.googleapis.com/www.krakenden.net/Collectibiles/20230809_232758.jpg', 1),
+('https://storage.googleapis.com/www.krakenden.net/Collectibiles/20230809_232833.jpg', 1);
 
 INSERT INTO BLOGPOSTS (title, content, collection_id, user_id) VALUES ('First post!', 'This is my first post!', 1, 1);
 
