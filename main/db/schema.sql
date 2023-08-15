@@ -1,6 +1,7 @@
-
 --SCHEMA SETUP
-CREATE DATABASE IF NOT EXISTS COLLECTIBILES_db;
+DROP DATABASE IF EXISTS COLLECTIBILES_db;
+
+CREATE DATABASE COLLECTIBILES_db;
 
 USE COLLECTIBILES_db;
 
@@ -25,12 +26,12 @@ CREATE TABLE COLLECTIONS (
 
 DROP TABLE IF EXISTS COLLECTION_IMAGES;
 
--- Create Colletion Images table
+-- Create Collection Images table
 CREATE TABLE COLLECTION_IMAGES (
-	id INT AUTO_INCREMENT PRIMARY KEY,
-	image_url TEXT NOT NULL,
-	collection_id INT,
-	FOREIGN KEY (collection_id) REFERENCES COLLECTIONS(id)
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    image_url TEXT NOT NULL,
+    collection_id INT,
+    FOREIGN KEY (collection_id) REFERENCES COLLECTIONS(id)
 );
 
 DROP TABLE IF EXISTS BLOGPOSTS;
@@ -41,8 +42,8 @@ CREATE TABLE BLOGPOSTS (
     content TEXT NOT NULL,
     collection_id INT,
     user_id INT,
-    FOREIGN KEY (collection_id) REFERENCES Collections(id),
-    FOREIGN KEY (user_id) REFERENCES Users(id)
+    FOREIGN KEY (collection_id) REFERENCES COLLECTIONS(id),
+    FOREIGN KEY (user_id) REFERENCES USERS(id)
 );
 
 DROP TABLE IF EXISTS COMMENTS;
@@ -52,8 +53,8 @@ CREATE TABLE COMMENTS (
     content TEXT NOT NULL,
     blogpost_id INT,
     user_id INT,
-    FOREIGN KEY (blogpost_id) REFERENCES BlogPosts(id),
-    FOREIGN KEY (user_id) REFERENCES Users(id)
+    FOREIGN KEY (blogpost_id) REFERENCES BLOGPOSTS(id),
+    FOREIGN KEY (user_id) REFERENCES USERS(id)
 );
 
 --SEED SCRIPTS
@@ -70,5 +71,6 @@ INSERT INTO COLLECTION_IMAGES (image_url, collection_id) VALUES ('https://storag
 
 INSERT INTO BLOGPOSTS (title, content, collection_id, user_id) VALUES ('First post!', 'This is my first post!', 1, 1);
 
-INSERT INTO COMMENTS (content, blogpost_id, user_id) VALUES ('that is really radical' 1, 2);
+INSERT INTO COMMENTS (content, blogpost_id, user_id) VALUES ('that is really radical', 1, 2);
+
 
