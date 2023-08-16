@@ -1,23 +1,48 @@
 const router = require("express").Router();
-const sequelize = require("../../config/connection");
+const { Collection, Item } = require("../../models");
 
-const { Collection } = require("../../models");
 
+
+// Get One Collection
+router.get("/collections/:id", async (req, res) => {
+  try {
+    const collectionData = await Collection.findByPk(req.params.id);
+    if (!collectionData) {
+      res.status(404).json({ message: "No collection with this id!" });
+      return;
+    }
+    res.status(200).json(collectionData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 // Get all collections
-router.get("/", async (req, res) => {
+router.get("/collections", async (req, res) => {
   try {
     const dbAllCollections = await Collection.findAll({
-      attributes: {},
-      order: [["user_id", "ASC"]],
+      include: [
+        { 
+          model: Item,
+          attributes: [ "name", "message"],
+          order: [["user_id", "ASC"]],
+        },
+      ]
     });
-    res.status(200).json(dbAllCollections);
+    const collections = dbAllCollections.map((collection) =>
+      collection.get({ plain: true })
+    );
+    res.render("collection", {
+      collections,
+    });
+    // res.status(200).json(dbAllCollections);
   } catch (err) {
+    console.log(err);
     res.status(500).json(err);
   }
 });
 
 // Create A New Collection
-router.post("/", async (req, res) => {
+router.post("/collections", async (req, res) => {
   try {
     const dbCollectionData = await Collection.create({
       name: req.body.name,
@@ -31,22 +56,9 @@ router.post("/", async (req, res) => {
   }
 });
 
-// Get One Collection
-router.get("/:id", async (req, res) => {
-  try {
-    const collectionData = await Collection.findByPk(req.params.id);
-    if (!collectionData) {
-      res.status(404).json({ message: "No collection with this id!" });
-      return;
-    }
-    res.status(200).json(collectionData);
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
 
 // Update A Collection
-router.put("/:id", async (req, res) => {
+router.put("/collections/:id", async (req, res) => {
   try {
     const collectionData = await Collection.update(req.body, {
       where: {
@@ -64,7 +76,7 @@ router.put("/:id", async (req, res) => {
 });
 
 // Delete A Collection
-router.delete("/:id", async (req, res) => {
+router.delete("/collections/:id", async (req, res) => {
   try {
     const collectionData = await Collection.destroy({
       where: {

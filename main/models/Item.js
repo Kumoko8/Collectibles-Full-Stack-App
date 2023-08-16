@@ -19,21 +19,22 @@ Item.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    message: {
-      type: DataTypes.TEXT,
+    filename: {
+      type: DataTypes.STRING,
+      allowNull: false,
     },
     date_of_collection: {
       type: DataTypes.DATE,
       allowNull: false,
     },
-    // collection_id: {
-    //   type: DataTypes.INTEGER,
-    //   // allowNull: false,
-    //   references: {
-    //     model: "collection",
-    //     key: "id",
-    //   },
-    // },
+    collection_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: "collection",
+        key: "id",
+      },
+    },
   },
   {
     sequelize,

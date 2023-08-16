@@ -1,7 +1,7 @@
 const router = require("express").Router();
 
 const withAuth = require("../utils/auth");
-const { User, Collection, Item } = require("../models");
+const { Collection, Item } = require("../models");
 
 router.get("/", async (req, res) => {
   res.render("homepage", { logged_in: req.session.logged_in });
@@ -17,13 +17,19 @@ router.get("/login", (req, res) => {
 });
 
 // Get Collections
-router.get("/collection/:id", withAuth, async (req, res) => {
+router.get("/collections", withAuth, async (req, res) => {
   try {
-    //TODO: add "include Items"
-    const dbCollectionData = await Collection.findByPk(req.params.id);
-    // const collections = dbCollectionData.get({ plain: true });
-
-    const collections = dbCollectionData;
+    const dbCollectionData = await Collection.findAll({
+      include: [
+        { 
+        model: Item,
+        attributes: [ "name", "description"],
+      },
+        ]
+      });
+    const collections = dbCollectionData.map((collection) =>
+      collection.get({plain: true})
+    );
     res.render("collection", {
       collections: collections,
       logged_in: req.session.logged_in,

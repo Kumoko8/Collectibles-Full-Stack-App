@@ -2,5 +2,8 @@
   {{#each collections as |collection|}}
     <h3>{{collection.name}}</h3>
     <p>{{collection.message}}</p>
+    {{#each collection.item as |item|}}
+    {{> item-details}}
+    {{/each}}
   {{/each}}
 </section>

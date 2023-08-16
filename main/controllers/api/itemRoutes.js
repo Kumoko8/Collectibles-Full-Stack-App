@@ -4,7 +4,7 @@ const sequelize = require("../../config/connection");
 const { Collection, Item } = require("../../models");
 
 // Get all items
-router.get("/", async (req, res) => {
+router.get("/item", async (req, res) => {
   try {
     // const dbAllItems = await Collection.findAll({
     //   include: [
@@ -25,7 +25,7 @@ router.get("/", async (req, res) => {
 });
 
 // Create A New Item
-router.post("/", async (req, res) => {
+router.post("/item", async (req, res) => {
   try {
     const dbItemData = await Item.create({
       name: req.body.name,

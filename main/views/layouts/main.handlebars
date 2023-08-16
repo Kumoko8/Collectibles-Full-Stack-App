@@ -10,16 +10,16 @@
   </head>
   <body>
     <header>
-      <h1> Welcome to Collectibles! </h1>
+      <h1 class="main-color-bar"> Welcome to Collectibles! </h1>
     </header>
-    <nav>
+    <nav class="main-color-bar">
       <a href="/">Home</a>
-      <a href="#">Collections</a>
+      <a href="/collections">Collections</a>
       {{#unless logged_in}}
         <a href="/login">Login</a>
       {{/unless}}
       {{#if logged_in}}
-        <a href="" id="logout">Logout</a>
+        <a href="/logout" id="logout">Logout</a>
       {{/if}}
     </nav>
     <section>
