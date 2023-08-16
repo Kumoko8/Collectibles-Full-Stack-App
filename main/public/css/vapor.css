@@ -2086,6 +2086,25 @@ progress {
     -webkit-overflow-scrolling: touch;
   }
 }
+
+.title-text {
+  text-align: center;
+}
+
+.form-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.login-section,
+.signup-section {
+  width: 48%;
+  padding: 20px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
 .form-label {
   margin-bottom: 0.5rem;
 }
