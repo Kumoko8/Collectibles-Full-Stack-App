@@ -23,7 +23,7 @@ router.get("/collections", async (req, res) => {
       include: [
         { 
           model: Item,
-          attributes: [ "name", "message"],
+          attributes: [ "name", "description", "date_of_collection"],
           order: [["user_id", "ASC"]],
         },
       ]

@@ -1,22 +1,14 @@
 const router = require("express").Router();
 const sequelize = require("../../config/connection");
 
-const { Collection, Item } = require("../../models");
+const { Item } = require("../../models");
 
 // Get all items
 router.get("/item", async (req, res) => {
   try {
-    // const dbAllItems = await Collection.findAll({
-    //   include: [
-    //     {
-    //       model: Item,
-    //       attributes: ["name", "description"],
-    //     },
-    //   ],
-    // });
     const dbAllItems = await Item.findAll({
-      // attributes: {},
-      // order: [["collection_id", "ASC"]],
+      attributes: ["name", "description", "date_of_collection"],
+      order: [["collection_id", "ASC"]],
     });
     res.status(200).json(dbAllItems);
   } catch (err) {
@@ -30,9 +22,9 @@ router.post("/item", async (req, res) => {
     const dbItemData = await Item.create({
       name: req.body.name,
       description: req.body.description,
-      message: req.body.message,
-      collection_id: req.body.collection_id,
+      filename: req.body.filename,
       date_of_collection: req.body.date_of_collection,
+      collection_id: req.body.collection_id,
     });
     res.status(200).json(dbItemData);
   } catch (err) {
