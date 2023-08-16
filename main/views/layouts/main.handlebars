@@ -7,20 +7,41 @@
       initial-scale='1.0"'
     />
     <title>Collectibles</title>
+    <link rel="stylesheet" href="css/vapor.css"/>
   </head>
   <body>
     <header>
-      <h1 class="main-color-bar"> Welcome to Collectibles! </h1>
+      <h1 class="title-text"> Welcome to Collectibles! </h1>
     </header>
-    <nav class="main-color-bar">
-      <a href="/">Home</a>
-      <a href="/collections">Collections</a>
-      {{#unless logged_in}}
-        <a href="/login">Login</a>
+    <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+    <div class="collapse navbar-collapse" id="navbarColor01">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link active" href="#">Home
+            <span class="visually-hidden">(current)</span>
+          </a>
+                  </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Collectibles</a>
+        </li>
+        <li class="nav-item">
+                {{#unless logged_in}}
+        <a class="nav-link" href="/login">Login</a>
       {{/unless}}
       {{#if logged_in}}
-        <a href="/logout" id="logout">Logout</a>
+        <a class="nav-link" href="" id="logout">Logout</a>
       {{/if}}
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">About</a>
+        </li>
+      </ul>
+      <form class="d-flex">
+        <input class="form-control me-sm-2" type="search" placeholder="Search">
+        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
     </nav>
     <section>
       {{{body}}}
