@@ -72,4 +72,14 @@ router.get("/item/:id", async (req, res) => {
   }
 });
 
+// Login route
+router.get("/upload", (req, res) => {
+  if (req.session.logged_in) {
+    res.redirect("/");
+    return;
+  }
+  res.render("upload");
+});
+
+
 module.exports = router;
