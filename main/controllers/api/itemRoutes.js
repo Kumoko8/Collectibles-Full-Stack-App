@@ -4,9 +4,9 @@ const sequelize = require("../../config/connection");
 const { Item } = require("../../models");
 
 // Get all items
-router.get("/item", async (req, res) => {
+router.get("/item/:id", async (req, res) => {
   try {
-    const dbAllItems = await Item.findAll({
+    const dbAllItems = await Item.findByPk({
       attributes: ["name", "description", "date_of_collection"],
       order: [["collection_id", "ASC"]],
     });

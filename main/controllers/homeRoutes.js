@@ -52,8 +52,8 @@ router.get('/collections/:id', withAuth, async (req, res) => {
           },
         ],
       });
-      const gallery = dbCollectionData.get({ plain: true });
-      res.render('collection', { gallery, loggedIn: req.session.loggedIn });
+      const collection = dbCollectionData.get({ plain: true });
+      res.render('collection-details', { collection, loggedIn: req.session.loggedIn });
     } catch (err) {
       console.log(err);
       res.status(500).json(err);
@@ -62,11 +62,13 @@ router.get('/collections/:id', withAuth, async (req, res) => {
 );
 router.get("/item/:id", async (req, res) => {
   try {
-    const dbAllItems = await Item.findAll({
+    const dbAllItems = await Item.findByPk({
       attributes: ["name", "description", "date_of_collection"],
       order: [["collection_id", "ASC"]],
     });
-    res.status(200).json(dbAllItems);
+    // res.status(200).json(dbAllItems);
+    const item = dbAllItems.get({ plain: true });
+    res.render('item-details', { item, loggedIn: req.session.loggedIn });
   } catch (err) {
     res.status(500).json(err);
   }

@@ -1,5 +1,5 @@
 const { Item } = require('../models');
-//import the auth object and use the url endpoint for filename
+//import the imagekit.upload object and use the url endpoint for filename
 const itemdata = [
   {
     name: 'Siam',
@@ -17,7 +17,7 @@ const itemdata = [
       'A rare card from Dodgers Team',
     filename: 'card.jpg',
     date_of_collection: 'April 1, 1965',
-    collection_id: 1,
+    collection_id: 2,
     
     
   },
@@ -27,7 +27,7 @@ const itemdata = [
       'A rare beanie from the 70s ',
     filename: 'bear.jpg',
     date_of_collection: 'April 1, 1970',
-    collection_id: 1,
+    collection_id: 3,
     
     
   },
