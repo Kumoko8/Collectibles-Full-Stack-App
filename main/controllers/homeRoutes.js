@@ -74,6 +74,30 @@ router.get("/item/:id", async (req, res) => {
   }
 });
 
+router.get("/create", (req, res) => {
+    res.render("collection-create", {logged_in: req.session.logged_in }
+    );
+});
+
+router.post("/create", async (req, res) => {
+  try {
+    const dbCollectionData = await Collection.create({
+      name: req.body.name,
+      message: req.body.message,
+      user_id: req.body.user_id,
+    });
+    
+    
+    res.render("collection-create", { 
+      dbCollectionData, 
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+
 // Login route
 router.get("/upload", (req, res) => {
   if (req.session.logged_in) {
