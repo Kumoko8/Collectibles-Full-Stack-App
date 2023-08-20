@@ -1,7 +1,7 @@
 const router = require("express").Router();
 
 const withAuth = require("../utils/auth");
-const { Collection, Item } = require("../models");
+const { Collection, Item} = require("../models");
 
 router.get("/", async (req, res) => {
   res.render("homepage", { logged_in: req.session.logged_in });
@@ -79,20 +79,21 @@ router.get("/create", (req, res) => {
     );
 });
 
-router.post("/create", async (req, res) => {
+router.post("/create", withAuth, async (req, res) => {
+  const { name, message } = req.body
+  const userId = req.session.user_id
   try {
-    const dbCollectionData = await Collection.create({
-      name: req.body.name,
-      message: req.body.message,
-      user_id: req.body.user_id,
+    const newCollection = await Collection.create({
+      name,
+      message,
+      user_id: userId
     });
-    
-    
-    res.render("collection-create", { 
-      dbCollectionData, 
-    });
+    //I had to take this redirect out for it work so we need to figure out how to get it to work
+    //or we can make another handlebars for the success message and then to make new items for collections
+    // res.redirect("/collections");
+    res.send(`New collection: Title ${newCollection.name} created!`);
   } catch (err) {
-    console.log(err);
+    // console.log(err);
     res.status(500).json(err);
   }
 });
