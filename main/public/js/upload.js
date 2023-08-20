@@ -20,7 +20,7 @@ async function upload(data) {
     });
 
     var uploadfile = document.getElementById("uploadfile");
-
+//export this object to be used by itemData.js
     imagekit.upload({
         file: uploadfile.files[0],
         fileName: uploadfile.files[0].name + ".jpg",

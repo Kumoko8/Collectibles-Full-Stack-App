@@ -22,7 +22,7 @@ Collection.init(
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: "user",
+        model: "User",
         key: "id",
       },
     },

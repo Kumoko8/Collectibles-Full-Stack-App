@@ -1,8 +1,7 @@
 <section>
   {{#each collections as |collection|}}
-   <a href="/item/{{collection.id}}"><h3>{{collection.name}}</h3></a> 
+   <a href="/collections/{{collection.id}}"><h3>{{collection.name}}</h3></a> 
     <p>{{collection.message}}</p>
   {{/each}}
-
-  
 </section>
+  <a href="/create"><h6 class="btn btn-secondary">Create New Collection</h6></a> 
