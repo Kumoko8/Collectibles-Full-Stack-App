@@ -78,12 +78,12 @@ router.get("/create", (req, res) => {
     res.render("collection-create", {logged_in: req.session.logged_in }
     );
 });
-
+let newCollection;
 router.post("/create", withAuth, async (req, res) => {
   const { name, message } = req.body
   const userId = req.session.user_id
   try {
-    const newCollection = await Collection.create({
+    newCollection = await Collection.create({
       name,
       message,
       user_id: userId
@@ -91,7 +91,9 @@ router.post("/create", withAuth, async (req, res) => {
     //I had to take this redirect out for it work so we need to figure out how to get it to work
     //or we can make another handlebars for the success message and then to make new items for collections
     // res.redirect("/collections");
-    res.send(`New collection: Title ${newCollection.name} created!`);
+    // const creationSuccess = `<p >New collection:${newCollection.name} created!</p> <button class="btn btn-secondary"></button>`
+  
+    res.redirect("/collections");
   } catch (err) {
     // console.log(err);
     res.status(500).json(err);
