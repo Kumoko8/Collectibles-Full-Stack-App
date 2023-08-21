@@ -8,6 +8,7 @@
     />
     <title>Collectibles</title>
     <link rel="stylesheet" href="/css/vapor.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   </head>
   <body>
     <header>
@@ -33,7 +34,7 @@
         <a class="nav-link" href="/login">Login</a>
       {{/unless}}
       {{#if logged_in}}
-        <a class="nav-link" href="/logout" id="logout">Logout</a>
+        <button class="nav-link" id="logout">Logout</button> 
       {{/if}}
         </li>
         <li class="nav-item">
