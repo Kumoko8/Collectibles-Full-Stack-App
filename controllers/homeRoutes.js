@@ -65,6 +65,7 @@ router.get("/collections", withAuth, async (req, res) => {
       collection.get({plain: true})
     );
     res.render("collection", {
+      pageTitle: "Collections",
       collections: collections,
       logged_in: req.session.logged_in,
     });
