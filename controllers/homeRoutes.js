@@ -85,7 +85,7 @@ router.get('/collections/:id', withAuth, async (req, res) => {
         include: [
           {
             model: Item,
-            attributes: ["name", "description", "date_of_collection"]
+            attributes: ["name", "description", "date_of_collection", "filename"]
           },
         ],
       });
