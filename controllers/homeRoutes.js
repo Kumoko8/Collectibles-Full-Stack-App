@@ -143,5 +143,10 @@ router.get("/upload", (req, res) => {
   res.render("upload");
 });
 
+// About page
+router.get("/about", (req, res) => {
+  res.render("about", { logged_in: req.session.logged_in });
+});
+
 
 module.exports = router;
