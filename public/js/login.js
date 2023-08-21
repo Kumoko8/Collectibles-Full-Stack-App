@@ -13,8 +13,9 @@ const loginFormHandler = async (event) => {
 
     if (response.ok) {
       document.location.replace("/");
+      alert("Login success!")
     } else {
-      alert("Failed to log in.");
+      alert("Incorrect email or password. Please try again");
     }
   }
 };
@@ -34,9 +35,10 @@ const signupFormHandler = async (event) => {
     });
 
     if (response.ok) {
-      document.location.replace("/");
+      document.location.replace("/login")
+      alert("Success! Please login with your new profile!");
     } else {
-      alert("Failed to sign up.");
+      alert("Sign up failed. Please make sure email and password are unique.");
     }
   }
 };

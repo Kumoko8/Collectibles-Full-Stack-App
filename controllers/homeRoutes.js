@@ -16,6 +16,40 @@ router.get("/login", (req, res) => {
   res.render("login");
 });
 
+router.post("/login", async (req, res) => {
+  try {
+    const userData = await User.findOne({ 
+      where: { 
+        email: req.body.email } });
+
+    if (!userData) {
+      res
+        .status(400)
+        .json({ message: "Incorrect email or password, please try again" });
+      return;
+    }
+
+    const validPassword = await userData.checkPassword(req.body.password);
+
+    if (!validPassword) {
+      res
+        .status(400)
+        .json({ message: "Incorrect email or password, please try again" });
+      return;
+    }
+
+    req.session.save(() => {
+      req.session.user_id = userData.id;
+      req.session.logged_in = true;
+
+      res
+        .status(200)
+        .json({ user: userData, message: "You are now logged in!" });
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 // Get Collections
 router.get("/collections", withAuth, async (req, res) => {
   try {
@@ -88,10 +122,6 @@ router.post("/create", withAuth, async (req, res) => {
       message,
       user_id: userId
     });
-    //I had to take this redirect out for it work so we need to figure out how to get it to work
-    //or we can make another handlebars for the success message and then to make new items for collections
-    // res.redirect("/collections");
-    // const creationSuccess = `<p >New collection:${newCollection.name} created!</p> <button class="btn btn-secondary"></button>`
   
     res.redirect("/collections");
   } catch (err) {
