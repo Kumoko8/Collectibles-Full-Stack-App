@@ -53,7 +53,9 @@ router.post("/login", async (req, res) => {
 // Get Collections
 router.get("/collections", withAuth, async (req, res) => {
   try {
+    const userId = req.session.user_id
     const dbCollectionData = await Collection.findAll({
+      where:{user_id: userId},
       include: [
         { 
         model: Item,

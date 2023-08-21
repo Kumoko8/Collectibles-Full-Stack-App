@@ -31,7 +31,7 @@ Item.init(
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: "Collection",
+        model: "collection",
         key: "id",
       },
     },
