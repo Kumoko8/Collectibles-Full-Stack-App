@@ -1,13 +1,12 @@
 <section>
   <h1>{{collection.name}}</h1>
-  <section>
-    {{#each items as |item|}}
-      <a href="/item/{{item.id}}"><h2>{{item.name}}</h2></a>
-      {{!-- <img src="/#/{{item.filename}}" alt="{{item.description}}"> --}}
-    {{/each}}
-  </section>
+   <section>
+        <p>{{collection.message}}</p>
+    </section>
+<section id="image">
+</section>
   <button id="delete-collection">
-    <i id="flex" class="fas fa-trash-alt">DELETE</i>
+    <i id="flex" class="fas fa-trash-alt"></i>
   </button>
 </section>
 
